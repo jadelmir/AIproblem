@@ -8,7 +8,7 @@ def getVal(board , X , Y , player):
     if elem == 0 : return (0 , X ,Y ) 
     if elem == 3 - player : return (3 -player , X , Y)
 
-def CoordAvaiableMove(board ,X , Y, player):
+def CoordAvailableMove(board ,X , Y, player):
     TOP = getVal(board, X - 1, Y, player)
     BOT = getVal(board, X + 1, Y, player)
     Right = getVal(board, X , Y+1, player)
@@ -20,7 +20,7 @@ def getAvailableMoves(board , player):
     points = np.where(board == player)
     X , Y = points
     for i in range(len(X)):
-        mov = CoordAvaiableMove(board , X[i], Y[i] , player)
+        mov = CoordAvailableMove(board , X[i], Y[i] , player)
         print(mov)
     
     for x in mov :
