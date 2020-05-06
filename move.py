@@ -1,10 +1,12 @@
 import numpy as np
 from random import choice 
-def getmove(board , player):
+# from alphaBeta import alphaBeta
+
+def getAvailableMoves(board,player):
     good = np.argwhere(board == player)
     dir = 1 if player == 1 else -1 
 
-    moves = []
+    AvailableMoves = []
     for r ,c in good:
         for dc , dr in [(dir, 0),(0,-1),(0,1)]:
             newr , newc = r + dr , c + dc 
@@ -14,12 +16,17 @@ def getmove(board , player):
 
                 x = board [ newr , newc]
                 if x != player and (x != 3 - player or dr != 0):
-                    moves.append((r,c,newr,newc))
+                    AvailableMoves.append((r,c,newr,newc))
             except :
                 continue
+    return AvailableMoves
+
+# def getmove(board , player):
     
-    move = choice(moves)
-    return move 
+#     AvailableMoves = getAvailableMoves(board,player)
+#     alphaBeta(board,player,-1)
+#     move = choice(AvailableMoves)
+#     return move 
 
 
 if __name__ == "__main__":
